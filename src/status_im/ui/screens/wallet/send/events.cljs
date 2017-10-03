@@ -67,6 +67,7 @@
     (let [{:keys [hash error]} response]
       (when-not (and error (string? error) (not (string/blank? error)))
         {:db       (-> db
+                       (assoc-in [:wallet/send-transaction :in-progress?] false)
                        (assoc-in [:wallet/send-transaction :transaction-id] nil)
                        (assoc :wrong-password? false))
          :dispatch [:navigate-to :wallet-transaction-sent]}))))
@@ -104,9 +105,11 @@
         {::accept-transaction {:id           transaction-id
                                :password     password
                                :on-completed on-transactions-completed}}
-        {:db                (update-in db [:wallet/send-transaction]
-                                       #(assoc % :waiting-signal? true
-                                                 :later? later?))
+        {:db                (-> db
+                                (update-in [:wallet/send-transaction]
+                                           #(assoc % :waiting-signal? true
+                                                   :later? later?))
+                                (assoc-in [:wallet/send-transaction :in-progress?] true))
          ::send-transaction {:web3  web3
                              :from  (get-in accounts [current-account-id :address])
                              :to    (:to-address send-transaction)
