@@ -8,10 +8,13 @@
 
   (reagent/create-class
     {
-     :component-did-mount (fn [] ())
+     :component-did-mount (fn []
+                            (.hide react/splash-screen)
+                            )
      :display-name "root"
      :reagent-render views/main}))
 
 (defn init []
   (.registerComponent react/app-registry "StatusIm" #(reagent/reactify-component app-root))
-  (dispatch-sync [:initialize-app]))
+  ;(dispatch-sync [:initialize-app])
+  )

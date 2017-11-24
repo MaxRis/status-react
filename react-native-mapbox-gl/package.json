@@ -1,0 +1,122 @@
+{
+  "_from": "react-native-mapbox-gl@github:mapbox/react-native-mapbox-gl#d2a0a851d57672132344596b26a4776172370937",
+  "_id": "react-native-mapbox-gl@5.2.0",
+  "_inBundle": false,
+  "_integrity": "sha1-W0J56MKtwwiPpRSbJnBEa6EXiZM=",
+  "_location": "/react-native-mapbox-gl",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "react-native-mapbox-gl@github:mapbox/react-native-mapbox-gl#d2a0a851d57672132344596b26a4776172370937",
+    "name": "react-native-mapbox-gl",
+    "escapedName": "react-native-mapbox-gl",
+    "rawSpec": "github:mapbox/react-native-mapbox-gl#d2a0a851d57672132344596b26a4776172370937",
+    "saveSpec": "github:mapbox/react-native-mapbox-gl#d2a0a851d57672132344596b26a4776172370937",
+    "fetchSpec": null,
+    "gitCommittish": "d2a0a851d57672132344596b26a4776172370937"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "github:mapbox/react-native-mapbox-gl#d2a0a851d57672132344596b26a4776172370937",
+  "_spec": "react-native-mapbox-gl@github:mapbox/react-native-mapbox-gl#d2a0a851d57672132344596b26a4776172370937",
+  "_where": "/Users/vkjr/work/projects/github/MaxRis2/status-react",
+  "author": {
+    "name": "Bobby Sudekum"
+  },
+  "bugs": {
+    "url": "https://github.com/mapbox/react-native-mapbox-gl/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "babel-eslint": "^6.1.2",
+    "lodash": "^4.13.1"
+  },
+  "deprecated": false,
+  "description": "A Mapbox GL react native module for creating custom maps",
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.1.1",
+    "eslint-config-strict-react": "^8.0.1",
+    "eslint-plugin-react": "^5.2.2",
+    "eslint-plugin-react-native": "1.1.0"
+  },
+  "homepage": "https://github.com/mapbox/react-native-mapbox-gl#readme",
+  "keywords": [
+    "gl",
+    "ios",
+    "android",
+    "mapbox",
+    "react-component",
+    "react-native"
+  ],
+  "licenses": [
+    {
+      "type": "BSD",
+      "url": "https://github.com/mapbox/react-native-mapbox-gl/blob/master/LICENSE.md"
+    }
+  ],
+  "name": "react-native-mapbox-gl",
+  "peerDependencies": {
+    "react": ">=15.4.0",
+    "react-native": ">=0.40"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapbox/react-native-mapbox-gl.git"
+  },
+  "scripts": {
+    "lint": "eslint --no-eslintrc -c .eslintrc index.js example.js",
+    "preinstall": "node ./scripts/download-mapbox-gl-native-ios-if-on-mac.js 3.3.1",
+    "test": "npm run lint"
+  },
+  "version": "5.2.0",
+  "react-native": {
+    "zlib": "browserify-zlib",
+    "console": "console-browserify",
+    "constants": "constants-browserify",
+    "crypto": "react-native-crypto",
+    "dns": "dns.js",
+    "net": "react-native-tcp",
+    "domain": "domain-browser",
+    "http": "react-native-http",
+    "https": "https-browserify",
+    "os": "os-browserify",
+    "path": "path-browserify",
+    "querystring": "querystring-es3",
+    "fs": "react-native-level-fs",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "timers": "timers-browserify",
+    "tty": "tty-browserify",
+    "vm": "vm-browserify"
+  },
+  "browser": {
+    "zlib": "browserify-zlib",
+    "console": "console-browserify",
+    "constants": "constants-browserify",
+    "crypto": "react-native-crypto",
+    "dns": "dns.js",
+    "net": "react-native-tcp",
+    "domain": "domain-browser",
+    "http": "react-native-http",
+    "https": "https-browserify",
+    "os": "os-browserify",
+    "path": "path-browserify",
+    "querystring": "querystring-es3",
+    "fs": "react-native-level-fs",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "timers": "timers-browserify",
+    "tty": "tty-browserify",
+    "vm": "vm-browserify"
+  }
+}

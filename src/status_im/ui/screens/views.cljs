@@ -11,6 +11,9 @@
     current-view
     :profile))
 
+(enable-console-print!)
+(print "-------------- MAIN - PROFILE ------------------")
+
 (defview main []
   [view [profile]])
           

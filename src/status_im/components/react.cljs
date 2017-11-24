@@ -24,6 +24,7 @@
 (def orientation rn-dependencies/orientation)
 (def back-android (get-react-property "BackAndroid"))
 (def drawer rn-dependencies/drawer)
+(def splash-screen (.-SplashScreen native-modules))
 
 ;; React Components
 
@@ -130,10 +131,10 @@
 (defn get-dimensions [name]
   (js->clj (.get dimensions name) :keywordize-keys true))
 
-(def gradient (adapt-class (.-default rn-dependencies/linear-gradient)))
-
-(defn linear-gradient [props]
-  [gradient props])
+;(def gradient (adapt-class (.-default rn-dependencies/linear-gradient)))
+;
+;(defn linear-gradient [props]
+;  [gradient props])
 
 (defn list-item [component]
   (r/as-element component))

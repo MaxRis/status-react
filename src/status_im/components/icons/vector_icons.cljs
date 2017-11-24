@@ -6,22 +6,22 @@
             [status-im.components.react :as react]
             [status-im.react-native.js-dependencies :as rn-dependencies]))
 
-(defn get-property [name]
-  (aget rn-dependencies/svg name))
+;(defn get-property [name]
+;  (aget rn-dependencies/svg name))
 
 (defn adapt-class [class]
   (when class
     (reagent/adapt-react-class class)))
 
-(defn get-class [name]
-  (adapt-class (get-property name)))
-
-(def svg (get-class "Svg"))
-(def g (get-class "G"))
-(def rect (get-class "Rect"))
-(def path (get-class "Path"))
-(def use-def (get-class "Use"))
-(def defs (get-class "Defs"))
+;(defn get-class [name]
+;  (adapt-class (get-property name)))
+;
+;(def svg (get-class "Svg"))
+;(def g (get-class "G"))
+;(def rect (get-class "Rect"))
+;(def path (get-class "Path"))
+;(def use-def (get-class "Use"))
+;(def defs (get-class "Defs"))
 
 (def icons {:icons/chats               (slurp-svg "./resources/icons/bottom/chats_gray.svg")
             :icons/chats-active        (slurp-svg "./resources/icons/bottom/chats_active.svg")

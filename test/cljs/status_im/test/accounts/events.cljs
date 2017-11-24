@@ -5,8 +5,8 @@
             [day8.re-frame.test :refer-macros [run-test-sync]]
             status-im.ui.screens.db
             status-im.ui.screens.subs
-            [status-im.ui.screens.events :as events]
-            [status-im.ui.screens.accounts.events :as account-events]
+            ;[status-im.ui.screens.events :as events]
+            ;[status-im.ui.screens.accounts.events :as account-events]
             [status-im.constants :as constants]))
 
 (def account-from-realm
