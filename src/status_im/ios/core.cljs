@@ -5,11 +5,6 @@
             [status-im.components.react :as react]
             [status-im.utils.platform :as platform]))
 
-(print "platforms: ")
-(print platform/desktop?)
-(print platform/ios?)
-(print platform/android?)
-
 (defn app-root []
 
   (reagent/create-class

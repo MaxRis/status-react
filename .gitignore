@@ -87,3 +87,6 @@ ios/StatusIm.xcworkspace
 
 #qt
 *.qmlc
+
+#npm
+package-lock.json

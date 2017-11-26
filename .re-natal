@@ -48,7 +48,7 @@
   "imageDirs": [
     "resources/images"
   ],
-  "iosHost": "192.168.100.12",
+  "iosHost": "172.20.10.3",
   "envRoots": {
     "dev": "env/dev",
     "prod": "env/prod"
