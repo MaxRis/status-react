@@ -20,10 +20,10 @@
 
 (def native-modules (.-NativeModules rn-dependencies/react-native))
 (def device-event-emitter (.-DeviceEventEmitter rn-dependencies/react-native))
-(def dismiss-keyboard! rn-dependencies/dismiss-keyboard)
-(def orientation rn-dependencies/orientation)
+;(def dismiss-keyboard! rn-dependencies/dismiss-keyboard)
+;(def orientation rn-dependencies/orientation)
 (def back-android (get-react-property "BackAndroid"))
-(def drawer rn-dependencies/drawer)
+;(def drawer rn-dependencies/drawer)
 (def splash-screen (.-SplashScreen native-modules))
 
 ;; React Components
@@ -38,7 +38,7 @@
 (print "!!!! AppState:" app-state)
 (print "!!!! View:" view)
 ;;(def status-bar (get-class "StatusBar"))
-(def drawer-layout (adapt-class drawer))
+;(def drawer-layout (adapt-class drawer))
 
 (def list-view-class (get-class "ListView"))
 (def scroll-view (get-class "ScrollView"))
@@ -143,21 +143,21 @@
 
 ;; Image picker
 
-(def image-picker-class rn-dependencies/image-crop-picker)
+;(def image-picker-class rn-dependencies/image-crop-picker)
 
 (defn show-access-error [o]
   (when (= "ERROR_PICKER_UNAUTHORIZED_KEY" (aget o "code")) ; Do not show error when user cancel selection
     (u/show-popup (i18n/label :t/error)
                   (i18n/label :t/photos-access-error))))
 
-(defn show-image-picker [images-fn]
-  (let [image-picker (.-default image-picker-class)]
-    (-> image-picker
-        (.openPicker (clj->js {:multiple false}))
-        (.then images-fn)
-        (.catch show-access-error))))
+;(defn show-image-picker [images-fn]
+;  (let [image-picker (.-default image-picker-class)]
+;    (-> image-picker
+;        (.openPicker (clj->js {:multiple false}))
+;        (.then images-fn)
+;        (.catch show-access-error))))
 
-(def swiper (adapt-class rn-dependencies/swiper))
+;(def swiper (adapt-class rn-dependencies/swiper))
 
 (print "----react.cljs 5")
 

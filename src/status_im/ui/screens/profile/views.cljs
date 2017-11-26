@@ -8,8 +8,7 @@
             [status-im.components.chat-icon.screen :refer [my-profile-icon]]
             [status-im.components.common.common
              :refer
-             [bottom-shadow
-              form-spacer separator]]
+             [bottom-shadow form-spacer separator]]
             [status-im.components.context-menu :refer [context-menu]]
             [status-im.components.list-selection :refer [share-options]]
             [status-im.components.react :as react]
@@ -22,6 +21,7 @@
             [status-im.ui.screens.profile.styles :as styles]
             [status-im.utils.datetime :as time]
             [status-im.utils.utils :refer [hash-tag?]]
+            [status-im.utils.platform :as platform]
             )
   (:require-macros [status-im.utils.views :refer [defview letsubs]]))
   
@@ -46,8 +46,9 @@
 
 (defn profile-badge [{:keys [name last-online] :as contact}]
   [react/view styles/profile-badge
-   ;[my-profile-icon {:account {:photo-path (js/require "./200px-Anonymous.png") :name name}
-   ;                  :edit?   false}]
+   (if platform/desktop?
+   [my-profile-icon {:account {:photo-path (js/require "./200px-Anonymous.png") :name name}
+                     :edit?   false}])
                      
    [react/view styles/profile-badge-name-container
     [react/text {:style           styles/profile-name-text
@@ -203,9 +204,6 @@
    [react/text {:style styles/testnet-only-text}
     (label "testnet")]])
 
-(enable-console-print!)
-(print "-------------- DEFVIEW - PROFILE ------------------")
-
 (defview profile []
   [react/view styles/profile-form
    [react/scroll-view
@@ -214,15 +212,16 @@
      [profile-status]]
     [form-spacer]
     [react/view styles/profile-badge
-     [my-profile-icon {:account {:photo-path (vi/icon :icons/qr  {:color :gray}) :name "QR icon"}
-                       :edit?   false}]
+     (if platform/desktop?
+     [my-profile-icon {:account {:photo-path (js/require "./QR.svg") :name "QR icon"}
+                       :edit?   false}])
      [action-button {:label "Show QR"}]]
     [form-spacer]
     [react/view styles/profile-info-container
        [my-profile-info {:phone "+44 7911 123456"
                          :public-key "0x04223458893...303a35c18c29caf"
                          :address "e6e248c8caac...d48395284bd23a"}]]]])
-
+    
     ;;[react/image {:source {:uri "https://origami.design/public/images/bird-logo.png" :width 64 :height 64}
     ;;    :style {:width 64 :height 64}]]]])     ;;  [bottom-shadow]]]])
      
@@ -234,7 +233,6 @@
  ;;     [react/view
  ;;      [react/text {:style styles/add-a-status}
  ;;       "Add status")
-
 
 
   ;;[react/view [react/text "Some text here!!"]])
