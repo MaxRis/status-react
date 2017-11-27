@@ -1,7 +1,8 @@
 (ns status-im.utils.transactions
   (:require [status-im.utils.utils :as utils]
             [status-im.utils.types :as types]
-            [status-im.utils.money :as money]))
+            ;[status-im.utils.money :as money]
+            ))
 
 (defn get-network-subdomain [network]
   (case network

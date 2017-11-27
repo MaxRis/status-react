@@ -11,6 +11,7 @@
     current-view
     :profile))
 
+
 (defview main []
   [view [profile]])
           

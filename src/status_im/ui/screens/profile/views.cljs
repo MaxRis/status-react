@@ -21,7 +21,8 @@
             [status-im.ui.screens.profile.styles :as styles]
             [status-im.utils.datetime :as time]
             [status-im.utils.utils :refer [hash-tag?]]
-            [status-im.utils.config :as config])
+            [status-im.utils.platform :as platform]
+            )
   (:require-macros [status-im.utils.views :refer [defview letsubs]]))
   
 (defn my-profile-toolbar []
@@ -45,8 +46,9 @@
 
 (defn profile-badge [{:keys [name last-online] :as contact}]
   [react/view styles/profile-badge
+   (if platform/desktop?
    [my-profile-icon {:account {:photo-path (js/require "./200px-Anonymous.png") :name name}
-                     :edit?   false}]
+                     :edit?   false}])
                      
    [react/view styles/profile-badge-name-container
     [react/text {:style           styles/profile-name-text
@@ -210,8 +212,9 @@
      [profile-status]]
     [form-spacer]
     [react/view styles/profile-badge
+     (if platform/desktop?
      [my-profile-icon {:account {:photo-path (js/require "./QR.svg") :name "QR icon"}
-                       :edit?   false}]
+                       :edit?   false}])
      [action-button {:label "Show QR"}]]
     [form-spacer]
     [react/view styles/profile-info-container
