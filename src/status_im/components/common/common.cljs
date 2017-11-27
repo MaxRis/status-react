@@ -1,30 +1,37 @@
 (ns status-im.components.common.common
-  (:require [status-im.components.react :refer [view text linear-gradient]]
+  (:require [status-im.components.react :refer [view text   ;linear-gradient
+                                                ]]
             [status-im.components.icons.vector-icons :as vi]
             [status-im.components.context-menu :refer [context-menu]]
             [status-im.utils.platform :as p]
             [status-im.components.common.styles :as st]))
 
 (defn top-shadow []
-  (when p/android?
-    [linear-gradient
-     {:style  st/gradient-bottom
-      :colors st/gradient-top-colors}]))
+  (
+    ;when p/android?
+    ;[linear-gradient
+    ; {:style  st/gradient-bottom
+    ;  :colors st/gradient-top-colors}]
+    ))
 
 (defn bottom-shadow []
-  (when p/android?
-    [linear-gradient
-     {:style  st/gradient-top
-      :colors st/gradient-bottom-colors}]))
+  (
+    ;when p/android?
+    ;[linear-gradient
+    ; {:style  st/gradient-top
+    ;  :colors st/gradient-bottom-colors}]
+    ))
 
 (defn separator [style & [wrapper-style]]
    [view st/separator])
 
 (defn form-spacer []
   [view
-   [bottom-shadow]
+   ;[bottom-shadow]
    [view st/form-spacer]
-   [top-shadow]])
+   ;[top-shadow]
+   ])
+
 
 (defn list-separator []
   [separator st/list-separator])
