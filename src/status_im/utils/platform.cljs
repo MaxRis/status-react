@@ -1,5 +1,6 @@
 (ns status-im.utils.platform
-  (:require [status-im.android.platform :as android]
+  (:require
+    ;[status-im.android.platform :as android]
             [status-im.ios.platform :as ios]
             [status-im.react-native.js-dependencies :as rn-dependencies]))
 
@@ -9,9 +10,13 @@
 
 (def android? (= platform "android"))
 (def ios? (= platform "ios"))
+(def desktop? (= platform "ubuntu"))
 
-(def platform-specific
-  (cond
-    android? android/platform-specific
-    ios? ios/platform-specific
-    :else {}))
+;(def platform-specific
+;  (cond
+;    android? android/platform-specific
+;    ios? ios/platform-specific
+;    :else {}))
+
+
+(def platform-specific ios/platform-specific)

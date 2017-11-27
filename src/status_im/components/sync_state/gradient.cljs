@@ -4,7 +4,7 @@
             [status-im.components.react :refer [view
                                                 text
                                                 animated-view
-                                                linear-gradient
+                                                ;linear-gradient
                                                 get-dimensions]]
             [status-im.components.sync-state.styles :as st]
             [status-im.components.animation :as anim]
@@ -111,10 +111,11 @@
          [view st/sync-style-gradient
           [animated-view {:style (st/loading-wrapper sync-state-opacity)}
            [animated-view {:style (st/gradient-wrapper in-progress-opacity gradient-position)}
-            [linear-gradient {:colors    ["#89b1fe" "#8b5fe4" "#8b5fe4" "#89b1fe"]
-                              :start     {:x 0 :y 1}
-                              :end       {:x 1 :y 1}
-                              :locations [0 0.3 0.7 1]
-                              :style     (st/gradient gradient-width)}]]
+            ;[linear-gradient {:colors    ["#89b1fe" "#8b5fe4" "#8b5fe4" "#89b1fe"]
+            ;                  :start     {:x 0 :y 1}
+            ;                  :end       {:x 1 :y 1}
+            ;                  :locations [0 0.3 0.7 1]
+            ;                  :style     (st/gradient gradient-width)}]
+            ]
            (when (not= @sync-state :in-progress)
              [animated-view {:style (st/synced-wrapper synced-opacity window-width)}])]])})))

@@ -12,8 +12,8 @@
 (def root-el (r/as-element [reloader]))
 
 (figwheel/watch-and-reload
- :websocket-url "ws://10.0.1.15:3449/figwheel-ws"
+ :websocket-url "ws://0.0.0.0:3449/figwheel-ws"
  :heads-up-display false
  :jsload-callback #(swap! cnt inc))
 
-(rr/enable-re-frisk-remote! {:host "10.0.1.15:4567" :on-init core/init :pre-send (fn [db] (update db :chats #(into {} %)))})
+(rr/enable-re-frisk-remote! {:host "0.0.0.0:4567" :on-init core/init :pre-send (fn [db] (update db :chats #(into {} %)))})
