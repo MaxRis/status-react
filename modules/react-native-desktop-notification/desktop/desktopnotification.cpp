@@ -13,44 +13,42 @@
 #include "eventdispatcher.h"
 
 #include <QDebug>
+#include <QSystemTrayIcon>
 
 namespace {
 struct RegisterQMLMetaType {
-    RegisterQMLMetaType() {
-        qRegisterMetaType<DesktopNotification*>();
-    }
+  RegisterQMLMetaType() { qRegisterMetaType<DesktopNotification *>(); }
 } registerMetaType;
 } // namespace
 
 class DesktopNotificationPrivate {
 public:
-    Bridge* bridge = nullptr;
+  Bridge *bridge = nullptr;
 };
 
-DesktopNotification::DesktopNotification(QObject* parent) : QObject(parent), d_ptr(new DesktopNotificationPrivate) {
-}
+DesktopNotification::DesktopNotification(QObject *parent)
+    : QObject(parent), d_ptr(new DesktopNotificationPrivate) {}
 
 DesktopNotification::~DesktopNotification() {}
 
-void DesktopNotification::setBridge(Bridge* bridge) {
-    Q_D(DesktopNotification);
-    d->bridge = bridge;
+void DesktopNotification::setBridge(Bridge *bridge) {
+  Q_D(DesktopNotification);
+  d->bridge = bridge;
 }
 
-QString DesktopNotification::moduleName() {
-    return "DesktopNotification";
+QString DesktopNotification::moduleName() { return "DesktopNotification"; }
+
+QList<ModuleMethod *> DesktopNotification::methodsToExport() {
+  return QList<ModuleMethod *>{};
 }
 
-QList<ModuleMethod*> DesktopNotification::methodsToExport() {
-    return QList<ModuleMethod*>{};
-}
+QVariantMap DesktopNotification::constantsToExport() { return QVariantMap(); }
 
-QVariantMap DesktopNotification::constantsToExport() {
-    return QVariantMap();
-}
+void DesktopNotification::sendNotification() {
+  Q_D(DesktopNotification);
+  qDebug() << "call of DesktopNotification::sendNotification(); !!!";
+  // d->bridge->invokePromiseCallback(callbackId, QVariantList{});
 
-void DesktopNotification::sendNotification(double callbackId) {
-    Q_D(DesktopNotification);
-    qDebug() << "call of DesktopNotification::sendNotification(); !!!";
-    d->bridge->invokePromiseCallback(callbackId, QVariantList{});
+  QSystemTrayIcon *trayIcon = new QSystemTrayIcon(this);
+  trayIcon->showMessage("You have new message", "Nice to meet you");
 }

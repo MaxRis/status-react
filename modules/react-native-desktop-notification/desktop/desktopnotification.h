@@ -32,7 +32,7 @@ public:
     QList<ModuleMethod*> methodsToExport() override;
     QVariantMap constantsToExport() override;
 
-    Q_INVOKABLE void sendNotification(double callbackId);
+    Q_INVOKABLE void sendNotification();
 private:
     QScopedPointer<DesktopNotificationPrivate> d_ptr;
 };
