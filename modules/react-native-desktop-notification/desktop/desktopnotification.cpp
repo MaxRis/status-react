@@ -12,8 +12,11 @@
 #include "bridge.h"
 #include "eventdispatcher.h"
 
+#include "libsnore/application.h"
+#include "libsnore/snore.h"
+
+#include <QCoreApplication>
 #include <QDebug>
-#include <QSystemTrayIcon>
 
 namespace {
 struct RegisterQMLMetaType {
@@ -24,12 +27,35 @@ struct RegisterQMLMetaType {
 class DesktopNotificationPrivate {
 public:
   Bridge *bridge = nullptr;
+  Snore::Application snoreApp;
 };
 
 DesktopNotification::DesktopNotification(QObject *parent)
-    : QObject(parent), d_ptr(new DesktopNotificationPrivate) {}
+    : QObject(parent), d_ptr(new DesktopNotificationPrivate) {
+  d_ptr->snoreApp = Snore::Application(QCoreApplication::applicationName(),
+                                       Snore::Icon::defaultIcon());
+  d_ptr->snoreApp.addAlert(
+      Snore::Alert("NewMessage", Snore::Icon::defaultIcon()));
 
-DesktopNotification::~DesktopNotification() {}
+  if (Snore::SnoreCore::instance().pluginNames().isEmpty()) {
+    Snore::SnoreCore::instance().loadPlugins(Snore::SnorePlugin::Backend);
+  }
+
+  qDebug() << "List of all loaded Snore plugins: "
+           << Snore::SnoreCore::instance().pluginNames();
+
+  Snore::SnoreCore::instance().registerApplication(d_ptr->snoreApp);
+  Snore::SnoreCore::instance().setDefaultApplication(d_ptr->snoreApp);
+
+  qDebug() << "Current notification backend: "
+           << Snore::SnoreCore::instance().primaryNotificationBackend();
+
+  // Snore::SnoreCore::instance().setPrimaryNotificationBackend(option);
+}
+
+DesktopNotification::~DesktopNotification() {
+  Snore::SnoreCore::instance().deregisterApplication(d_ptr->snoreApp);
+}
 
 void DesktopNotification::setBridge(Bridge *bridge) {
   Q_D(DesktopNotification);
@@ -47,8 +73,9 @@ QVariantMap DesktopNotification::constantsToExport() { return QVariantMap(); }
 void DesktopNotification::sendNotification() {
   Q_D(DesktopNotification);
   qDebug() << "call of DesktopNotification::sendNotification(); !!!";
-  // d->bridge->invokePromiseCallback(callbackId, QVariantList{});
 
-  QSystemTrayIcon *trayIcon = new QSystemTrayIcon(this);
-  trayIcon->showMessage("You have new message", "Nice to meet you");
+  Snore::Notification notification(
+      d_ptr->snoreApp, d_ptr->snoreApp.alerts()["NewMessage"], "New message",
+      "Hey how are you?", Snore::Icon::defaultIcon());
+  Snore::SnoreCore::instance().broadcastNotification(notification);
 }
