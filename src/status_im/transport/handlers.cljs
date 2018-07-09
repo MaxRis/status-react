@@ -33,7 +33,7 @@
          (assoc cofx :js-obj js-message)
          ;(log/debug "!!! New message received: " status-message)
          ;(.sendNotification react/desktop-notification)
-         (#(.sendNotification react/desktop-notification))
+         ;(#(.sendNotification react/desktop-notification))
          (message/receive status-message (or chat-id sig) sig)
          (update-last-received-from-inbox now-in-s timestamp ttl))
         (catch :default e nil))))) ; ignore unknown message types
