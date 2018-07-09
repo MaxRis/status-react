@@ -173,7 +173,8 @@ parallel (
             sh ('cp -rf ' + packageFolder + '/StatusImAppImage/* ' + packageFolder +'/AppDir/usr/bin')
             sh ('rm -f ' + packageFolder +'/AppDir/usr/bin/StatusIm.AppImage')
 
-            sh ('export PATH=/home/maxr/Qt5.9.1/5.9.1/gcc_64/bin:/usr/local/go/bin:$PATH && ./linuxdeployqt-continuous-x86_64.AppImage ' + packageFolder+ '/AppDir/usr/share/applications/StatusIm.desktop -verbose=3 -appimage -qmake=/home/maxr/Qt5.9.1/5.9.1/gcc_64/bin/qmake')
+            sh ('export PATH=/home/maxr/Qt5.9.1/5.9.1/gcc_64/bin:/usr/local/go/bin:$PATH && ./linuxdeployqt-continuous-x86_64.AppImage ' + packageFolder+ '/AppDir/usr/share/applications/StatusIm.desktop -verbose=3 -appimage -qmake=/home/maxr/Qt5.9.1/5.9.1/gcc_64/bin/qmake -exclude-libs="libsnore_backend_freedesktop.so,libsnore_backend_snore.so,libsnore_backend_trayicon.so,libsnore_frontend_freedesktop.so,libsnore_frontend_pushover.so,libsnore_frontend_snarlnetwork.so,libsnore_secondarybackend_pushover.so,libsnore_secondarybackend_sound.so,libsnore_secondarybackend_speech.so,libsnore_secondarybackend_toasty.so,libsnore_settings_backend_snore.so,libsnore_settings_frontend_pushover.so,libsnore_settings_secondarybackend_pushover.so,libsnore_settings_secondarybackend_sound.so,libsnore_settings_secondarybackend_toasty.so"')
+
             sh 'ldd ' + packageFolder+ '/AppDir/usr/bin/StatusIm'
             
             sh ('rm -rf ' + packageFolder +'/StatusIm.AppImage')
