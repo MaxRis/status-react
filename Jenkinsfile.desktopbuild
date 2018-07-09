@@ -156,7 +156,7 @@ parallel (
             sh ('cp -r ./deployment/linux/usr  ' + packageFolder + '/AppDir')
             sh ('cp  ./deployment/linux/.env  ' + packageFolder + '/AppDir')
             sh ('cp ./desktop/bin/StatusIm ' + packageFolder+ '/AppDir/usr/bin')
-            sh ('cp -r ./desktop/snorenotify_ep-prefix/src/snorenotify_ep/lib/x86_64-linux-gnu/plugins ' + packageFolder+ '/AppDir/usr/lib')
+            sh ('cp -r ./desktop/modules/react-native-desktop-notification/desktop/snorenotify_ep-prefix/src/snorenotify_ep/lib/x86_64-linux-gnu/plugins ' + packageFolder+ '/AppDir/usr/lib')
 
             sh ('cp -f /home/maxr/qttools/linuxdeployqt-continuous-x86_64.AppImage ./')
             sh ('chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage')
